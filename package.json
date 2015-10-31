@@ -16,9 +16,14 @@
     "hubot-redis-brain": "0.0.3",
     "hubot-rules": "^0.1.1",
     "hubot-scripts": "^2.16.2",
-    "hubot-shipit": "^0.2.0"
+    "hubot-shipit": "^0.2.0",
+    "lodash": "^3.10.1",
+    "node-foursquare-venues": "^1.1.0"
   },
   "engines": {
     "node": "0.10.x"
+  },
+  "devDependencies": {
+    "dotenv": "^1.2.0"
   }
 }

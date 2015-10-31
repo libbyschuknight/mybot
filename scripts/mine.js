@@ -3,3 +3,9 @@ module.exports = function (robot) {
     res.send('LIBBY!!!!')
   })
 }
+
+module.exports = function (robot) {
+  robot.respond(/Bananas/i, function (res) {
+    res.send('in pyjamas')
+  })
+}
