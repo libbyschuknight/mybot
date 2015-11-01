@@ -4,14 +4,11 @@ var _ = require('lodash')
 var foursquare = require('node-foursquare-venues')(process.env.FOURSQUARE_CLIENT_ID, process.env.FOURSQUARE_CLIENT_SECRET)
 
 module.exports = function (bot) {
-
-  bot.respond(/lunch2/i, function (res) {
+  bot.respond(/coffee near (.*)/i, function (res) {
     var params = {
-      url_search: "https://api.foursquare.com/v2/venues/explore?cat=food&mode=url&near=Te+Aro+Wellington"
-      // near: res.match[1],
-      //
-      // categoryId: '4bf58dd8d48988d1e0931735',
-      // radius: 1000
+      near: res.match[1],
+      categoryId: '4bf58dd8d48988d1e0931735',
+      radius: 1000
     }
 
     return foursquare.venues.search(params, function (error, payload) {
@@ -19,8 +16,7 @@ module.exports = function (bot) {
 
       var message = '\nHello ! I\'m the neohipster coffee bot. You have this coffee shops nearby:\n\n'
 
-      var coffeeShops = _.sample(payload.response.venues, 1)
-      console.log(coffeeShops)
+      var coffeeShops = _.sample(payload.response.venues, 3)
       var url = 'https://www.foursquare.com/v/'
 
       for (var i = 0; i < coffeeShops.length; i++) {
